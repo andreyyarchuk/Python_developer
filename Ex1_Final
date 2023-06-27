@@ -1,0 +1,68 @@
+# Написать класс. принимающий на вход текст.
+# Один метод класса должен выводить в консоль самое длинное слово в тексте
+# Второй метод это самое часто встречаемое слово.
+# Третий метод выводит количество спецсимволов в тексте (точки, запятые и так далее)
+# Четвертый метод выводит все палиндромы через запятую.
+
+# Один метод класса должен выводить в консоль самое длинное слово в тексте
+def def_longest_word(text):
+    arr_word = text.split()
+    longest_word = ''
+    for i in range(len(arr_word)):
+        if len(arr_word[i]) > len(longest_word):
+            longest_word = arr_word[i]
+    return print(longest_word)
+
+
+# Второй метод это самое часто встречаемое слово.
+def def_how_many_times_i_see_you(text):
+    arr_words = text.split()
+    k = 0
+    max_count_of_word = 0
+    max_word = ''
+    for j in range(len(arr_words)):
+        current_word = arr_words[j]
+        k = 0
+        for i in range(len(arr_words)):
+            if current_word == arr_words[i]:
+                k = k + 1
+        if max_count_of_word < k:
+            max_count_of_word = k
+            max_word = current_word
+    return max_word
+
+
+# Третий метод выводит количество спецсимволов в тексте (точки, запятые и так далее)
+def def_coint_of_spacial_symbol(text):
+    coint_of_spacial_symbol = 0
+    list_of_spacial_symbol = [' ', '!', '@', '#', '$', '%', '^',  '&', '*', '(', ')', '-', '_', '=', '+']
+    for i in range(len(text)):
+        if text[i] in list_of_spacial_symbol:
+            print(i, '-', text[i])
+            coint_of_spacial_symbol = coint_of_spacial_symbol + 1
+    return (coint_of_spacial_symbol)
+
+
+# Четвертый метод выводит все палиндромы через запятую.
+def def_check_palindrome(word):
+    drow = ''
+    for i in range(len(word)):
+        drow =  word[i] + drow
+    if len(word) == 1:
+        return(False)
+    else:
+        if word.lower() == drow.lower():
+            return(True)
+        else:
+            return(False)
+
+def def_how_much_palindroms(text):
+    arr_words = text.split()
+    palindroms = ''
+    for i in range(len(arr_words)):
+        if def_check_palindrome(arr_words[i]) == True:
+            if len(palindroms) > 0:
+                palindroms = palindroms + ', ' + arr_words[i]
+            else:
+                palindroms = arr_words[i]
+    return palindroms
